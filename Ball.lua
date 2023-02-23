@@ -8,7 +8,8 @@ function Ball:init(x, y, width, height)
 
     -- equivalent to "(math.random(2)==1) ? -100 : 100" in C
     self.dx = math.random(2)==1 and -BALL_SPEED or BALL_SPEED
-    self.dy = math.random(2)==1 and -BALL_SPEED or BALL_SPEED
+    self.dy = math.random(2)==1 and
+        math.random(-BALL_SPEED-10, -BALL_SPEED+10) or math.random(BALL_SPEED+10, BALL_SPEED-10)
 end
 
 function Ball:collide(box)
@@ -26,7 +27,8 @@ function Ball:reset()
     self.x = INITIAL_BALL_X
     self.y = INITIAL_BALL_Y
     self.dx = serving_player==1 and BALL_SPEED or -BALL_SPEED
-    self.dy = math.random(2)==1 and -BALL_SPEED or BALL_SPEED
+    self.dy = math.random(2)==1 and
+        math.random(-BALL_SPEED-10, -BALL_SPEED+10) or math.random(BALL_SPEED+10, BALL_SPEED-10)
 end
 
 function Ball:update(dt)
